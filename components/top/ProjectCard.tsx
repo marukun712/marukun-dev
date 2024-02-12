@@ -6,6 +6,7 @@ import Lightbox from "yet-another-react-lightbox";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
+import Link from "next/link";
 
 type Props = {
     title: string,
@@ -29,17 +30,18 @@ export default function ProjectCard(props: Props) {
                 close={() => setOpen(false)}
                 slides={slides}
             />
-
-            <button onClick={() => setOpen(true)}>
-                <Card className="h-96">
-                    <Card.Image src={props.images[0].url} />
+            <Card className="h-96">
+                <button onClick={() => setOpen(true)}>
+                    <Card.Image src={props.images[0].url} className="h-48" />
+                </button>
+                <Link href={props.url}>
                     <Card.Body className="text-center">
                         <Card.Title tag="h1" className="m-auto">{props.title}</Card.Title>
                         <p>{props.startDate}</p>
                         <p>{props.description}</p>
                     </Card.Body>
-                </Card>
-            </button>
+                </Link>
+            </Card>
         </div>
     )
 }
