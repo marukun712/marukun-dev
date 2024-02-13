@@ -10,7 +10,7 @@ async function searchPosts(query: string) {
         const data = await blogClient.get({
             endpoint: 'blogs',
             queries: {
-                filters: `content[contains]${query}[or]title[contains]${query}`
+                q: `${query}`
             }
         })
         return data
@@ -18,20 +18,13 @@ async function searchPosts(query: string) {
 }
 
 export default async function Page({ searchParams }: { searchParams: { query: string } }) {
-    const result = await searchPosts(searchParams.query)
-
     if (!searchParams.query) return (
-        <p className="text-center">条件を指定してください。</p>
+        <h1 className="text-center">検索ワードを指定してください。</h1>
     )
 
-
-    if (result.contents.length === 0) return (
-        <p className="text-center">条件に合う検索結果が見つかりませんでした。</p>
-    )
-
-    if (result) return (
+    return (
         <Suspense fallback={<Loading />}>
-            <Blog data={result} />
+            <Blog data={await searchPosts(searchParams.query)} />
         </Suspense>
     )
 }

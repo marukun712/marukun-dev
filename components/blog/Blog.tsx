@@ -7,6 +7,10 @@ type Props = {
 }
 
 export default function Blog(props: Props) {
+    if (props.data.contents.length === 0) return (
+        <h1 className="text-center">記事が見つかりませんでした。</h1>
+    )
+
     return (
         <div>
             <div className='md:w-1/2 m-auto'>
