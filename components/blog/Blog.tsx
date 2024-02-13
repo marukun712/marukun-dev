@@ -1,9 +1,9 @@
 "use client"
-import { PostData } from "@/types"
+import { PostData, Posts } from "@/types"
 import BlogCard from "./BlogCard"
 
 type Props = {
-    data: any
+    data: Posts
 }
 
 export default function Blog(props: Props) {

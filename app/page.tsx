@@ -4,8 +4,10 @@ import Profile from "@/components/top/Profile"
 import Projects from "@/components/top/Projects";
 import Skills from "@/components/top/Skills";
 import { client } from "@/libs/client";
+import { Suspense } from "react";
+import Loading from "@/components/Loading";
 
-async function getProfile() {
+async function fetchProfile() {
     const data = await client.get({
         endpoint: 'profile',
         queries: {
@@ -16,7 +18,7 @@ async function getProfile() {
     return data
 }
 
-async function getProjects() {
+async function fetchProjects() {
     const data = await client.get({
         endpoint: 'projects',
         queries: {
@@ -27,13 +29,12 @@ async function getProjects() {
     return data
 }
 
-
 export default async function Home() {
     return (
-        <>
-            <Profile data={await getProfile()} />
-            <Projects data={await getProjects()} />
+        <Suspense fallback={<Loading />}>
+            <Profile data={await fetchProfile()} />
+            <Projects data={await fetchProjects()} />
             <Skills />
-        </>
+        </Suspense>
     )
 }

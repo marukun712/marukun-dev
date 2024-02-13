@@ -1,9 +1,9 @@
 "use client"
-import { ProjectData } from "@/types";
+import { Projects, ProjectData } from "@/types";
 import ProjectCard from './ProjectCard';
 
 type Props = {
-    data: any
+    data: Projects
 }
 
 export default function Projects(props: Props) {

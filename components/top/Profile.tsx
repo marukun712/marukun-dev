@@ -1,8 +1,9 @@
 "use client"
+import { Profile } from "@/types";
 import { WindowMockup, Avatar, CodeMockup } from "react-daisyui";
 
 type Props = {
-    data: any
+    data: Profile
 }
 
 export default function Profile(props: Props) {

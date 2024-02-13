@@ -42,3 +42,30 @@ export type PostData = {
     category: Category[]
 }
 
+export type Profile = {
+    createdAt: string,
+    updatedAt: string,
+    publishedAt: string,
+    revisedAt: string,
+    name: string,
+    icon: {
+        url: string,
+        height: number,
+        width: number
+    },
+    profile: string
+}
+
+export type Projects = {
+    contents: ProjectData[]
+    totalCount: number,
+    offset: number,
+    limit: number
+}
+
+export type Posts = {
+    contents: PostData[]
+    totalCount: number,
+    offset: number,
+    limit: number
+}
