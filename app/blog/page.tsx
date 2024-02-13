@@ -19,7 +19,7 @@ async function fetchPosts() {
 export default async function Page() {
     return (
         <Suspense fallback={<Loading />}>
-            <div className="flex justify-center">
+            <div className="md:flex md:justify-center">
                 <Blog data={await fetchPosts()} />
                 <Search />
             </div>

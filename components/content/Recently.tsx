@@ -10,7 +10,7 @@ type Props = {
 export default function Recently(props: Props) {
     return (
         <div>
-            <div className='w-96 py-96'>
+            <div className='w-96 md:py-96'>
                 <h1 className='text-2xl font-bold text-center'>最新の記事</h1>
                 {(() => {
                     for (let i = 0; i < 5; i++) {
