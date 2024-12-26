@@ -7,22 +7,22 @@ import Loading from "@/components/Loading";
 import Search from "@/components/blog/Search";
 
 async function fetchPosts() {
-    const data = await blogClient.get({
-        endpoint: 'blogs',
-        queries: {
-            limit: 50
-        }
-    })
-    return data
+  const data = await blogClient.get({
+    endpoint: "blogs",
+    queries: {
+      limit: 50,
+    },
+  });
+  return data;
 }
 
 export default async function Page() {
-    return (
-        <Suspense fallback={<Loading />}>
-            <div className="md:flex md:justify-center">
-                <Blog data={await fetchPosts()} />
-                <Search />
-            </div>
-        </Suspense>
-    )
+  return (
+    <Suspense fallback={<Loading />}>
+      <div className="md:flex md:justify-center">
+        <Blog data={await fetchPosts()} />
+        <Search />
+      </div>
+    </Suspense>
+  );
 }

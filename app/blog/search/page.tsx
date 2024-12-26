@@ -6,25 +6,28 @@ import { Suspense } from "react";
 import Loading from "@/components/Loading";
 
 async function searchPosts(query: string) {
-    if (query) {
-        const data = await blogClient.get({
-            endpoint: 'blogs',
-            queries: {
-                q: `${query}`
-            }
-        })
-        return data
-    }
+  if (query) {
+    const data = await blogClient.get({
+      endpoint: "blogs",
+      queries: {
+        q: `${query}`,
+      },
+    });
+    return data;
+  }
 }
 
-export default async function Page({ searchParams }: { searchParams: { query: string } }) {
-    if (!searchParams.query) return (
-        <h1 className="text-center">検索ワードを指定してください。</h1>
-    )
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: { query: string };
+}) {
+  if (!searchParams.query)
+    return <h1 className="text-center">検索ワードを指定してください。</h1>;
 
-    return (
-        <Suspense fallback={<Loading />}>
-            <Blog data={await searchPosts(searchParams.query)} />
-        </Suspense>
-    )
+  return (
+    <Suspense fallback={<Loading />}>
+      <Blog data={await searchPosts(searchParams.query)} />
+    </Suspense>
+  );
 }
