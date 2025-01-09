@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="jp">
       <body className={`${quickSand.className}`}>
         <Header />
-        {children}
+        <div className="container mx-auto md:w-1/2 p-4">{children}</div>
       </body>
     </html>
   );

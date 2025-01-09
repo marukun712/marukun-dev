@@ -1,7 +1,6 @@
 export const dynamic = "force-dynamic";
 
 import Content from "@/components/content/Content";
-import Recently from "@/components/content/Recently";
 import { blogClient } from "@/libs/client";
 import { PostData } from "@/types";
 import { Suspense } from "react";
@@ -33,9 +32,8 @@ export default async function Page({ params }: { params: { id: string } }) {
   }
   return (
     <Suspense fallback={<Loading />}>
-      <div className="md:flex md:justify-center">
+      <div>
         <Content data={await filterContent(params.id)} />
-        <Recently data={await fetchPosts()} />
       </div>
     </Suspense>
   );

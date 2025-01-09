@@ -1,6 +1,6 @@
 "use client";
-import { Input, Button } from "react-daisyui";
-import { useState } from "react";
+import { Input, Button, Modal } from "react-daisyui";
+import { useCallback, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Search() {
@@ -11,20 +11,61 @@ export default function Search() {
     router.push(`/blog/search?query=${text}`);
   };
 
+  const ref = useRef<HTMLDialogElement>(null);
+  const handleShow = useCallback(() => {
+    ref.current?.showModal();
+  }, [ref]);
+
   return (
-    <div className="px-10">
-      <h1 className="text-2xl">サイト内検索</h1>
-      <Input
-        value={text}
-        placeholder="キーワードを入力..."
-        onChange={(e) => setText(e.target.value)}
-      />
-      <Button
-        onClick={() => {
-          handleSubmit();
-        }}
-      >
-        検索
+    <div>
+      <Modal backdrop={true} ref={ref}>
+        <Modal.Body>
+          <Input
+            value={text}
+            placeholder="検索..."
+            className="w-full"
+            onChange={(e) => setText(e.target.value)}
+          />
+        </Modal.Body>
+        <Modal.Actions>
+          <form onClick={handleSubmit}>
+            <Button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-search"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
+            </Button>
+          </form>
+        </Modal.Actions>
+      </Modal>
+
+      <Button onClick={handleShow}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="lucide lucide-search"
+        >
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.3-4.3" />
+        </svg>
       </Button>
     </div>
   );

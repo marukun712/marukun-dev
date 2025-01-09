@@ -32,9 +32,11 @@ async function fetchProjects() {
 export default async function Home() {
   return (
     <Suspense fallback={<Loading />}>
-      <Profile data={await fetchProfile()} />
-      <Projects data={await fetchProjects()} />
-      <Skills />
+      <div className="space-y-48">
+        <Profile data={await fetchProfile()} />
+        <Projects data={await fetchProjects()} />
+        <Skills />
+      </div>
     </Suspense>
   );
 }

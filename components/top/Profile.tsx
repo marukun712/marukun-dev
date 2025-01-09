@@ -8,12 +8,8 @@ type Props = {
 
 export default function Profile(props: Props) {
   return (
-    <div className="py-5">
-      <WindowMockup
-        className="md:w-1/2 m-auto"
-        backgroundColor="warning"
-        border={true}
-      >
+    <div>
+      <WindowMockup backgroundColor="warning" border={true}>
         <div className="py-20">
           <Avatar
             src={props.data.icon.url}

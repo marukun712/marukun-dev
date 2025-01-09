@@ -11,9 +11,9 @@ export default function Blog(props: Props) {
     return <h1 className="text-center">記事が見つかりませんでした。</h1>;
 
   return (
-    <div>
-      <div className="md:w-1/2 m-auto">
-        <h1 className="text-center text-2xl font-bold">Posts</h1>
+    <div className="space-y-24">
+      <h1 className="text-center text-2xl font-bold">Posts</h1>
+      <div className="grid md:grid-cols-3 gap-10">
         {props.data.contents.map((post: PostData) => {
           return (
             <BlogCard

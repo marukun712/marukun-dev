@@ -9,8 +9,8 @@ type Props = {
 export default function ProjectsList(props: Props) {
   return (
     <div>
-      <h1 className="text-2xl text-center py-40">Projects</h1>
-      <div className="md:w-1/2 m-auto grid md:grid-cols-3 gap-10">
+      <h1 className="text-3xl text-center my-20">Projects</h1>
+      <div className="grid md:grid-cols-3 gap-10">
         {props.data.contents.map((data: ProjectData) => {
           return (
             <ProjectCard

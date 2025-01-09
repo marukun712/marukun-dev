@@ -1,6 +1,6 @@
 "use client";
 import { Navbar, Menu, Link } from "react-daisyui";
-import ThemeController from "./ThemeController";
+import Search from "./blog/Search";
 
 export default function Header() {
   return (
@@ -14,13 +14,7 @@ export default function Header() {
           blog
         </Link>
       </div>
-      <div className="flex-none">
-        <Menu horizontal={true} className="px-1">
-          <Menu.Item>
-            <ThemeController />
-          </Menu.Item>
-        </Menu>
-      </div>
+      <Search />
     </Navbar>
   );
 }

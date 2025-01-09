@@ -15,7 +15,7 @@ export default function Content(props: Props) {
         date={props.data.createdAt}
         category={props.data.category}
       />
-      <div className="prose py-32">{parseHTML(props.data.content)}</div>
+      <div className="prose m-auto">{parseHTML(props.data.content)}</div>
     </div>
   );
 }
