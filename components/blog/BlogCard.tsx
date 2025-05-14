@@ -15,7 +15,7 @@ export default function BlogCard(props: Props) {
         <Card.Image src={props.image} className="w-full h-48 object-cover" />
         <Card.Body className="w-full">
           <Card.Title tag="h2">{props.title}</Card.Title>
-          <p>{props.date}</p>
+          <p>{new Date(props.date).toLocaleString("ja-jp")}</p>
         </Card.Body>
       </Card>
     </Link>

@@ -1,1 +1,1 @@
-yarn run start
+bun run start

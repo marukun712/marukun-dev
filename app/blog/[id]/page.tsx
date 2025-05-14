@@ -5,6 +5,7 @@ import { blogClient } from "@/libs/client";
 import { PostData } from "@/types";
 import { Suspense } from "react";
 import Loading from "@/components/Loading";
+import NotFound from "@/components/ui/404";
 
 async function fetchPosts() {
   const data = await blogClient.get({
@@ -30,11 +31,15 @@ export default async function Page({ params }: { params: { id: string } }) {
   if (typeof params.id !== "string") {
     return;
   }
-  return (
-    <Suspense fallback={<Loading />}>
-      <div>
-        <Content data={await filterContent(params.id)} />
-      </div>
-    </Suspense>
-  );
+  const data = await filterContent(params.id);
+
+  if (data)
+    return (
+      <Suspense fallback={<Loading />}>
+        <div>
+          <Content data={data} />
+        </div>
+      </Suspense>
+    );
+  else return <NotFound />;
 }

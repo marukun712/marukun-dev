@@ -1,14 +1,17 @@
 # marukun-dev
-microCMSで管理できるblog付きのシンプルな個人サイト。
+
+microCMS で管理できる blog 付きのシンプルな個人サイト。
 
 # Usage
-microCMSをセットアップ後、
+
+microCMS をセットアップ後、
 
 ```
-yarn install
+bun install
 ```
 
-プロジェクトルートにenv.tsを作成、必要情報を記述。
+プロジェクトルートに env.ts を作成、必要情報を記述。
+
 ```
 export const APIKEY: string = ""
 export const SERVICE_DOMAIN: string = ""
@@ -18,6 +21,7 @@ export const BLOG_DOMAIN: string = ""
 ```
 
 開発サーバーの起動。
+
 ```
-yarn run dev
+bun run dev
 ```
