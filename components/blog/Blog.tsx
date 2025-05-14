@@ -22,7 +22,7 @@ export default function Blog(props: Props) {
               image={
                 post.eyecatch
                   ? post.eyecatch.url
-                  : "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhNiQiwJEndtEtiXGbge_nFBhm48O1veQDVkskf53TwtD9Tf-UsueCE7WkNoLrs3cn05HT07yCtpNkFH8UcmEP4-IA-POvT81HlnsWRnOiCrJQ_MF8lRQxmUURmwhRMJdffXm_RRPXzjZO/s400/no_image_yoko.jpg"
+                  : `https://maril.blue/api/og/${post.title}`
               }
               content={post.content}
               date={post.publishedAt}

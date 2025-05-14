@@ -35,7 +35,7 @@ export async function generateMetadata({
         siteName: "marukun-dev",
         url: "https://maril.blue/",
         images: {
-          url: `/api/og/${query}の検索結果`,
+          url: `https://maril.blue/api/og/${query}の検索結果`,
           type: "image/png",
           width: 1200,
           height: 630,

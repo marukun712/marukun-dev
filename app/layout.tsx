@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     siteName: "marukun-dev",
     url: "https://maril.blue/",
     images: {
-      url: "/api/og/marukun-dev",
+      url: "https://maril.blue/api/og/marukun-dev",
       type: "image/png",
       width: 1200,
       height: 630,
