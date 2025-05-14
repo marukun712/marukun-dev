@@ -20,14 +20,16 @@ async function searchPosts(query: string) {
 export default async function Page({
   searchParams,
 }: {
-  searchParams: { query: string };
+  searchParams: Promise<{ query: string }>;
 }) {
-  if (!searchParams.query)
+  const { query } = await searchParams;
+
+  if (!query)
     return <h1 className="text-center">検索ワードを指定してください。</h1>;
 
   return (
     <Suspense fallback={<Loading />}>
-      <Blog data={await searchPosts(searchParams.query)} />
+      <Blog data={await searchPosts(query)} />
     </Suspense>
   );
 }

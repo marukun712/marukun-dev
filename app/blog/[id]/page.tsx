@@ -27,11 +27,17 @@ async function filterContent(id: string): Promise<PostData> {
   return postData[0];
 }
 
-export default async function Page({ params }: { params: { id: string } }) {
-  if (typeof params.id !== "string") {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+
+  if (typeof id !== "string") {
     return;
   }
-  const data = await filterContent(params.id);
+  const data = await filterContent(id);
 
   if (data)
     return (
