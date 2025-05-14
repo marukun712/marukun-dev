@@ -19,11 +19,7 @@ export default function Blog(props: Props) {
             <BlogCard
               id={post.id}
               title={post.title}
-              image={
-                post.eyecatch
-                  ? post.eyecatch.url
-                  : `https://maril.blue/api/og/${post.title}`
-              }
+              image={`https://maril.blue/api/og/${post.title}`}
               content={post.content}
               date={post.publishedAt}
               key={post.id}
