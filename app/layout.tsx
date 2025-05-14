@@ -1,12 +1,26 @@
 import type { Metadata } from "next";
-import { Quicksand } from "next/font/google";
+import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 
-const quickSand = Quicksand({ subsets: ["latin"], weight: "400" });
+const notoSans = Noto_Sans_JP({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "marukun-dev",
+  description: "marilの個人サイト",
+  openGraph: {
+    type: "website",
+    title: "marukun-dev",
+    description: "marilの個人サイト",
+    siteName: "marukun-dev",
+    url: "https://maril.blue/",
+    images: {
+      url: "/api/og/marukun-dev",
+      type: "image/png",
+      width: 1200,
+      height: 630,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -16,9 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="jp">
-      <body className={`${quickSand.className}`}>
+      <body className={`${notoSans.className}`}>
         <Header />
-        <div className="container mx-auto md:w-1/2 p-4">{children}</div>
+        <div className="container mx-auto p-4">{children}</div>
       </body>
     </html>
   );

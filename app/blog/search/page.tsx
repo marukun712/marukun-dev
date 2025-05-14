@@ -17,6 +17,33 @@ async function searchPosts(query: string) {
   }
 }
 
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ query: string }>;
+}) {
+  const { query } = await searchParams;
+
+  if (query)
+    return {
+      title: `${query}の検索結果 | marukun-dev`,
+      description: "marilの個人サイト",
+      openGraph: {
+        type: "website",
+        title: `${query}の検索結果 | marukun-dev`,
+        description: "marilの個人サイト",
+        siteName: "marukun-dev",
+        url: "https://maril.blue/",
+        images: {
+          url: `/api/og/${query}の検索結果`,
+          type: "image/png",
+          width: 1200,
+          height: 630,
+        },
+      },
+    };
+}
+
 export default async function Page({
   searchParams,
 }: {

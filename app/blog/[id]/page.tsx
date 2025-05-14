@@ -27,6 +27,35 @@ async function filterContent(id: string): Promise<PostData> {
   return postData[0];
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+
+  const data = await filterContent(id);
+
+  if (data)
+    return {
+      title: `${data.title} | marukun-dev`,
+      description: "marilの個人サイト",
+      openGraph: {
+        type: "website",
+        title: `${data.title} | marukun-dev`,
+        description: "marilの個人サイト",
+        siteName: "marukun-dev",
+        url: "https://maril.blue/",
+        images: {
+          url: `/api/og/${data.title}`,
+          type: "image/png",
+          width: 1200,
+          height: 630,
+        },
+      },
+    };
+}
+
 export default async function Page({
   params,
 }: {
@@ -34,9 +63,6 @@ export default async function Page({
 }) {
   const { id } = await params;
 
-  if (typeof id !== "string") {
-    return;
-  }
   const data = await filterContent(id);
 
   if (data)
